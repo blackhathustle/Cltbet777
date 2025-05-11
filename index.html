@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLBET777 - The Future of Decentralized Betting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* Changed color scheme from purple to orange */
+            --primary: #ff6b00;
+            --secondary: #ffaa00;
+            --dark: #0a0a14;
+            --darker: #050508;
+            --text: #ffffff;
+            --text-secondary: #b3b3cc;
+            --accent: #ff3e00;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--darker);
+            color: var(--text);
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+            width: 100%;
+            max-width: 100%; /* Ensure body doesn't exceed viewport width */
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            overflow-x: hidden; /* Prevent container horizontal scrolling */
+        }
+        
+        /* Header */
+        header {
+            background-color: rgba(10, 10, 20, 1);
+            width: 100%;
+            z-index: 100;
+            border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+            position: static; /* Keep header in normal flow */
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo::before {
+            content: "";
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 50%;
+            margin-right: 10px;
+            box-shadow: 0 0 15px var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .cta-button {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 20px rgba(255, 107, 0, 0.5);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(255, 107, 0, 0.7);
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: radial-gradient(circle at center, var(--dark), var(--darker));
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 50px 0;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="1" fill="rgba(255, 107, 0, 0.5)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            background: linear-gradient(to right, var(--text), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .secondary-button {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--primary);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .secondary-button:hover {
+            background: rgba(255, 107, 0, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        
+        .floating-element {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 50%;
+            filter: blur(3px);
+            opacity: 0.5;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.5;
+            }
+            90% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* About Section */
+        .about {
+            background-color: var(--dark);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden; /* Prevent horizontal scrolling */
+        }
+        
+        .about::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, var(--darker), transparent);
+            pointer-events: none;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 3px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background: rgba(15, 15, 25, 0.5);
+            border-radius: 15px;
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid rgba(255, 107, 0, 0.2);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.2);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* Airdrop Section */
+        .airdrop {
+            background-color: var(--darker);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden; /* Prevent horizontal scrolling */
+        }
+        
+        .airdrop-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .airdrop-info {
+            margin-bottom: 40px;
+        }
+        
+        .airdrop-info p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .airdrop-card {
+            background: rgba(15, 15, 25, 0.8);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+            border: 1px solid rgba(255, 107, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .airdrop-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg at 50% 50%, transparent 0%, var(--primary) 25%, transparent 50%);
+            animation: rotate 10s linear infinite;
+            opacity: 0.1;
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .airdrop-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        
+        .airdrop-card p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+        
+        .airdrop-timer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .timer-item {
+            background: rgba(10, 10, 20, 0.8);
+            border-radius: 10px;
+            padding: 15px;
+            min-width: 80px;
+            border: 1px solid rgba(255, 107, 0, 0.2);
+        }
+        
+        .timer-item .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+        
+        .timer-item .label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Leaderboard Section */
+        .leaderboard {
+            background-color: var(--dark);
+            padding: 100px 0;
+            overflow: hidden; /* Prevent horizontal scrolling */
+        }
+        
+        .leaderboard-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .leaderboard-info {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .leaderboard-info p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto 20px;
+        }
+        
+        .leaderboard-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            background: rgba(15, 15, 25, 0.5);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .leaderboard-table th,
+        .leaderboard-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 107, 0, 0.1);
+        }
+        
+        .leaderboard-table th {
+            background-color: rgba(255, 107, 0, 0.1);
+            color: var(--text);
+            font-weight: 600;
+        }
+        
+        .leaderboard-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .leaderboard-table tr:hover td {
+            background-color: rgba(255, 107, 0, 0.05);
+        }
+        
+        .rank {
+            font-weight: 700;
+            color: var(--text);
+        }
+        
+        .top-rank {
+            color: var(--secondary);
+        }
+        
+        /* Referral Section */
+        .referral {
+            background-color: var(--darker);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden; /* Prevent horizontal scrolling */
+        }
+        
+        .referral-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .referral-content {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .referral-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--text), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .referral-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .referral-steps {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .step {
+            display: flex;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .step-number {
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
+        }
+        
+        .step-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+        
+        .step-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .referral-link {
+            display: flex;
+            background: rgba(15, 15, 25, 0.5);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            align-items: center;
+        }
+        
+        .referral-link input {
+            flex: 1;
+            background: rgba(10, 10, 20, 0.8);
+            border: none;
+            padding: 12px 15px;
+            border-radius: 8px;
+            color: var(--text);
+            margin-right: 10px;
+        }
+        
+        .copy-button {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .copy-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            padding: 80px 0 30px;
+            position: relative;
+            overflow: hidden; /* Prevent horizontal scrolling */
+        }
+        
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--primary), transparent);
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-logo h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .footer-logo p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-links h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: var(--text);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(15, 15, 25, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 107, 0, 0.2);
+        }
+        
+        .social-link:hover {
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 107, 0, 0.3);
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 107, 0, 0.1);
+        }
+        
+        .footer-bottom p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .airdrop-timer {
+                flex-wrap: wrap;
+            }
+            
+            .timer-item {
+                min-width: 70px;
+            }
+            
+            .leaderboard-table th,
+            .leaderboard-table td {
+                padding: 10px;
+            }
+            
+            .referral-container {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .feature-card {
+                padding: 20px;
+            }
+            
+            .airdrop-card {
+                padding: 20px;
+            }
+            
+            .timer-item {
+                min-width: 60px;
+                padding: 10px;
+            }
+            
+            .timer-item .number {
+                font-size: 1.5rem;
+            }
+            
+            .leaderboard-table {
+                font-size: 0.9rem;
+            }
+            
+            /* Fix for mobile horizontal scrolling */
+            .leaderboard-table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">CLBET777</div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#airdrop">Airdrop</a>
+                    <a href="#leaderboard">Leaderboard</a>
+                    <a href="#referral">Referral</a>
+                </div>
+                <a href="https://airdrop.clbet777.online" class="cta-button">Join Airdrop</a>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>CLBET777 – The Future of Decentralized Betting</h1>
+                <p>CLBET777 is revolutionizing the betting industry with blockchain technology. Our token powers a decentralized ecosystem for white-label betting houses, offering transparency, security, and unmatched user experience.</p>
+                <div class="hero-buttons">
+                    <a href="https://airdrop.clbet777.online" class="cta-button">Join Airdrop</a>
+                    <a href="#about" class="secondary-button">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <div class="floating-elements" id="floating-elements"></div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About CLBET777</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 50px; color: var(--text-secondary); line-height: 1.6;">
+                CLBET777 is designed specifically for white-label betting houses, providing a complete decentralized solution that enhances transparency, reduces costs, and improves user experience.
+            </p>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Secure & Transparent</h3>
+                    <p>All betting transactions are recorded on the blockchain, ensuring complete transparency and eliminating the possibility of fraud.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Fast Transactions</h3>
+                    <p>Experience lightning-fast deposits and withdrawals with minimal fees, powered by our optimized blockchain technology.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Global Access</h3>
+                    <p>No geographical restrictions. Access your betting platform from anywhere in the world with an internet connection.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Airdrop Section -->
+    <section class="airdrop" id="airdrop">
+        <div class="container">
+            <div class="airdrop-container">
+                <h2 class="section-title">Airdrop Campaign</h2>
+                <div class="airdrop-info">
+                    <p>Join our exclusive airdrop campaign and be among the first to own CLBET777 tokens. Complete simple tasks to earn free tokens and participate in our ecosystem from day one.</p>
+                </div>
+                <div class="airdrop-card">
+                    <h3>Limited Time Offer</h3>
+                    <p>Our airdrop campaign is running for a limited time. Join now to secure your tokens before the public sale begins.</p>
+                    <div class="airdrop-timer">
+                        <div class="timer-item">
+                            <div class="number" id="days">00</div>
+                            <div class="label">Days</div>
+                        </div>
+                        <div class="timer-item">
+                            <div class="number" id="hours">00</div>
+                            <div class="label">Hours</div>
+                        </div>
+                        <div class="timer-item">
+                            <div class="number" id="minutes">00</div>
+                            <div class="label">Minutes</div>
+                        </div>
+                        <div class="timer-item">
+                            <div class="number" id="seconds">00</div>
+                            <div class="label">Seconds</div>
+                        </div>
+                    </div>
+                    <a href="https://airdrop.clbet777.online" class="cta-button">Join Airdrop Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section class="leaderboard" id="leaderboard">
+        <div class="container">
+            <div class="leaderboard-container">
+                <h2 class="section-title">Betting Leaderboard</h2>
+                <div class="leaderboard-info">
+                    <p>Our top bettors are rewarded with additional CLBET777 tokens. Place simulated bets now to climb the leaderboard and earn free tokens when we launch.</p>
+                </div>
+                <table class="leaderboard-table">
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>User</th>
+                            <th>Bets Placed</th>
+                            <th>Winnings</th>
+                            <th>Reward</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="rank top-rank">1</span></td>
+                            <td>Crypto_Whale</td>
+                            <td>245</td>
+                            <td>$12,450</td>
+                            <td>10,000 CLBET</td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank top-rank">2</span></td>
+                            <td>BetMaster99</td>
+                            <td>187</td>
+                            <td>$8,920</td>
+                            <td>7,500 CLBET</td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank top-rank">3</span></td>
+                            <td>LuckyStrike</td>
+                            <td>163</td>
+                            <td>$7,340</td>
+                            <td>5,000 CLBET</td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank">4</span></td>
+                            <td>TokenHunter</td>
+                            <td>142</td>
+                            <td>$6,780</td>
+                            <td>2,500 CLBET</td>
+                        </tr>
+                        <tr>
+                            <td><span class="rank">5</span></td>
+                            <td>CryptoGambler</td>
+                            <td>128</td>
+                            <td>$5,920</td>
+                            <td>1,000 CLBET</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Referral Section -->
+    <section class="referral" id="referral">
+        <div class="container">
+            <h2 class="section-title">Referral Program</h2>
+            <div class="referral-container">
+                <div class="referral-content">
+                    <h2>Earn +5% Bonus</h2>
+                    <p>Invite your friends to join CLBET777 and earn a 5% bonus on their token allocation. The more friends you invite, the more tokens you earn!</p>
+                    <div class="referral-link">
+                        <input type="text" value="https://airdrop.clbet777.online/?ref=your_address" readonly id="referral-input">
+                        <button class="copy-button" id="copy-button">Copy</button>
+                    </div>
+                </div>
+                <div class="referral-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Get Your Link</h3>
+                            <p>Generate your unique referral link by connecting your wallet to our platform.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Share With Friends</h3>
+                            <p>Share your referral link with friends through social media, messaging apps, or email.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Earn Rewards</h3>
+                            <p>Earn a 5% bonus on all tokens claimed by users who sign up through your link.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>CLBET777</h3>
+                    <p>The future of decentralized betting is here. Join us on this exciting journey to revolutionize the betting industry with blockchain technology.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-medium"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#airdrop">Airdrop</a></li>
+                        <li><a href="#leaderboard">Leaderboard</a></li>
+                        <li><a href="#referral">Referral</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Whitepaper</a></li>
+                        <li><a href="#">Tokenomics</a></li>
+                        <li><a href="#">Roadmap</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 CLBET777. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Floating elements animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const floatingElements = document.getElementById('floating-elements');
+            
+            for (let i = 0; i < 50; i++) {
+                const element = document.createElement('div');
+                element.classList.add('floating-element');
+                
+                // Random size
+                const size = Math.random() * 15 + 5;
+                element.style.width = `${size}px`;
+                element.style.height = `${size}px`;
+                
+                // Random position
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100 + 100;
+                element.style.left = `${posX}%`;
+                element.style.bottom = `${-posY}px`;
+                
+                // Random animation duration and delay
+                const duration = Math.random() * 10 + 10;
+                const delay = Math.random() * 5;
+                element.style.animation = `float ${duration}s ${delay}s infinite linear`;
+                
+                floatingElements.appendChild(element);
+            }
+            
+            // Countdown timer
+            const countDownDate = new Date();
+            countDownDate.setDate(countDownDate.getDate() + 30); // 30 days from now
+            
+            function updateCountdown() {
+                const now = new Date().getTime();
+                const distance = countDownDate - now;
+                
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                
+                document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+                document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+                document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+                document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+            }
+            
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            
+            // Copy referral link
+            const copyButton = document.getElementById('copy-button');
+            const referralInput = document.getElementById('referral-input');
+            
+            copyButton.addEventListener('click', function() {
+                referralInput.select();
+                document.execCommand('copy');
+                copyButton.textContent = 'Copied!';
+                
+                setTimeout(function() {
+                    copyButton.textContent = 'Copy';
+                }, 2000);
+            });
+            
+            // Mobile menu toggle
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navLinks = document.querySelector('.nav-links');
+            
+            mobileMenu.addEventListener('click', function() {
+                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '80px';
+                navLinks.style.left = '0';
+                navLinks.style.width = '100%';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.backgroundColor = 'var(--dark)';
+                navLinks.style.padding = '20px';
+                navLinks.style.zIndex = '1000';
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        window.scrollTo({
+                            top: targetElement.offsetTop - headerHeight,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Hide mobile menu after clicking
+                        if (window.innerWidth <= 768) {
+                            navLinks.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
